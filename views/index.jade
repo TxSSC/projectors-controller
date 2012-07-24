@@ -6,35 +6,40 @@ html
     script(src="/js/jquery.1.7.2.min.js")
     script(src="/js/main.js")
 
+    link(rel="stylesheet", href="/css/bootstrap.min.css")
+    link(rel="stylesheet", href="/css/main.css")
+
   body
 
-    h1 Projector Commands
+    .navbar
+        .navbar-inner
+          .container
+            a.brand Projector Commands
 
+    .container.commands
 
-    h3 Shutter
+      .row
+        h3 Shutter
 
-    ul
-      li
-        a#shutterOn(href="#") Turn Shutter On
-      li
-        a#shutterOff(href="#") Turn Shutter Off
+        .row.cf
+          a#shutterOn.span2(href="#") Turn Shutter On
+          a#shutterOff.span2(href="#") Turn Shutter Off
 
-    h3 OSD
+      .row
+        h3 OSD
 
-    ul
-      li
-        a#osdOff(href="#") OSD Off
+        .row.cf
+          a#osdOff.span2(href="#") OSD Off
 
-    h3 Macros
+      .row
+        h3 Macros
 
-    ul
-      li
-        a#macro1(href="#") RGB1 - [0, 1]
-      li
-        a#macro2(href="#") RBG2 - [0,1]
+        .row.cf
+          a#macro1.span2(href="#") RGB1 - [0, 1]
+          a#macro2.span2(href="#") RBG2 - [0,1]
 
-    h3 Shutdown
-
-    ul
-      li
-        a#standby(href="#") Shutdown
+      .row
+        h3 Shutdown
+        
+        .row.cf
+          a#standby.span2(href="#") Shutdown
