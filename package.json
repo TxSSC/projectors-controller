@@ -1,0 +1,20 @@
+{
+  "name": "projectors",
+  "description": "control the conference projectors",
+  "version": "0.1.0",
+  "author": "Cody Stoltman <particlebanana@gmail.com>",
+  "url": "http://github.com/TxSSC/projectors-controller",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/TxSSC/projectors-controller.git"
+  },
+  "dependencies": {
+    "express": "*",
+    "request": "*",
+    "async": "*"
+  },
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "main": "./app.js"
+}
