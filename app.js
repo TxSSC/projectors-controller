@@ -34,14 +34,14 @@ app.get('/shutterOn', function(req, res) {
 
   var result;
 
-  async.forEach(projectorIPs, function(address) {
+  async.forEach(projectorIPs, function(address, cb) {
     request(urlBase + address + '/cgi-bin/proj_ctl.cgi?key=shutter_on&lang=e', function (error, response, body) {
       result = response;
+      cb(error);
     });
   }, function(err) {
     res.send(result);
   });
-
 });
 
 
@@ -50,9 +50,10 @@ app.get('/shutterOff', function(req, res) {
 
   var result;
 
-  async.forEach(projectorIPs, function(address) {
+  async.forEach(projectorIPs, function(address, cb) {
     request(urlBase + address + '/cgi-bin/proj_ctl.cgi?key=shutter_off&lang=e', function (error, response, body) {
       result = response;
+      cb(error);
     });
   }, function(err) {
     res.send(result);
