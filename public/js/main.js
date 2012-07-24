@@ -42,4 +42,11 @@ $(document).ready(function() {
     return false;
   });
 
+  $('a#standby').click(function() {
+    $.get('/standby', function(response) {
+      // Do Something To Display Result
+    });
+    return false;
+  });
+
 });

@@ -44,7 +44,6 @@ app.get('/shutterOn', function(req, res) {
   });
 });
 
-
 // Loop through projectors and turn the shutter off
 app.get('/shutterOff', function(req, res) {
 
@@ -64,9 +63,11 @@ app.get('/shutterOff', function(req, res) {
 app.get('/osdOff', function(req, res) {
 
   var result;
-
   async.forEach(projectorIPs, function(address, cb) {
-    request(urlBase + address + '/cgi-bin/proj_ctl.cgi?key=shutter_off&lang=e&osd=on', function (error, response, body) {
+
+    request(urlBase + address + '/cgi-bin/proj_ctl.cgi?key=osd_off&lang=e', function (error, response, body) {
+//      console.log(response);
+//      console.log(error);
       result = response;
       cb(error);
     });
@@ -98,5 +99,21 @@ app.get('/switchInputs', function(req, res) {
   });
 });
 
+
+app.get('/standby', function(req, res) {
+
+  var result;
+  async.forEach(projectorIPs, function(address, cb) {
+
+    request(urlBase + address + '/cgi-bin/proj_ctl.cgi?key=pow_off&lang=e', function (error, response, body) {
+      console.log(response);
+      console.log(error);
+      result = response;
+      cb(error);
+    });
+  }, function(err) {
+    res.send(result);
+  });
+});
 
 app.listen(3000);
