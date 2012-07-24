@@ -19,8 +19,8 @@ var username = 'user1',
 
 var projectorIPs = [
   '192.168.0.105',
-  '192.168.0.111',
-  '192.168.0.108'
+  '192.168.0.108',
+  '192.168.0.111'
 ];
 
 // Main Page that serves the controls
