@@ -75,5 +75,28 @@ app.get('/osdOff', function(req, res) {
   });
 });
 
+/**
+ * Switch Inputs
+ *
+ * @params:
+ *  - input {String}, ex: rgb1, rgb2, svideo
+ *  - projectors {Array}, ex: [0,3]
+ */
+app.get('/switchInputs', function(req, res) {
+
+  var result,
+      input = req.query.input,
+      projectors = req.query.projectors;
+
+  async.forEach(projectors, function(index, cb) {
+    request(urlBase + projectorIPs[index] + '/cgi-bin/proj_ctl.cgi?key=' + input + '&lang=e&osd=on', function (error, response, body) {
+      result = response;
+      cb(error);
+    });
+  }, function(err) {
+    res.send(result);
+  });
+});
+
 
 app.listen(3000);
