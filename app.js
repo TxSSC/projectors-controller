@@ -58,7 +58,21 @@ app.get('/shutterOff', function(req, res) {
   }, function(err) {
     res.send(result);
   });
+});
 
+// Loop through projectors and turn the on screen display off
+app.get('/osdOff', function(req, res) {
+
+  var result;
+
+  async.forEach(projectorIPs, function(address, cb) {
+    request(urlBase + address + '/cgi-bin/proj_ctl.cgi?key=shutter_off&lang=e&osd=on', function (error, response, body) {
+      result = response;
+      cb(error);
+    });
+  }, function(err) {
+    res.send(result);
+  });
 });
 
 
