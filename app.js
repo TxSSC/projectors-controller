@@ -63,11 +63,12 @@ app.get('/shutterOff', function(req, res) {
 app.get('/osdOff', function(req, res) {
 
   var result;
+
   async.forEach(projectorIPs, function(address, cb) {
 
     request(urlBase + address + '/cgi-bin/proj_ctl.cgi?key=osd_off&lang=e', function (error, response, body) {
-//      console.log(response);
-//      console.log(error);
+      console.log(response);
+      console.log(error);
       result = response;
       cb(error);
     });
